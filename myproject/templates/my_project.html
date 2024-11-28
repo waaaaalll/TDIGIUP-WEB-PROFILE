@@ -1,8 +1,68 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Projects</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7fc;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            padding: 60px 20px;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+            color: #212529;
+            font-size: 2.5rem;
+        }
+        .card {
+            border: none;
+            transition: transform 0.3s, box-shadow 0.3s;
+            background: linear-gradient(145deg, #ffffff, #e6e9ef);
+            box-shadow: 6px 6px 12px #d1d4db, -6px -6px 12px #ffffff;
+            border-radius: 15px;
+        }
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+        }
+        .card-img-top {
+            height: 220px;
+            object-fit: cover;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+        }
+        .card-title {
+            color: #495057;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        .card-text {
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+        .card-text small {
+            color: #adb5bd;
+        }
+        footer {
+            background-color: #212529;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
+        }
+        footer p {
+            margin: 0;
+            font-size: 0.9rem;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -10,17 +70,22 @@
         <div class="row">
             {% for project in projects %}
                 <div class="col-md-4">
-                    <div class="card mb-3">
+                    <div class="card mb-4">
                         <img src="{{ project.image.url }}" class="card-img-top" alt="{{ project.title }}">
                         <div class="card-body">
                             <h5 class="card-title">{{ project.title }}</h5>
                             <p class="card-text">{{ project.description }}</p>
-                            <p class="card-text"><small class="text-muted">Date: {{ project.date }}</small></p>
+                            <p class="card-text">
+                                <small>Date: {{ project.date }}</small>
+                            </p>
                         </div>
                     </div>
                 </div>
             {% endfor %}
         </div>
     </div>
+    <footer>
+        <p>&copy; 2024 MyProject. All rights reserved.</p>
+    </footer>
 </body>
 </html>

@@ -3,10 +3,120 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Project</title>
+    <title>Welcome to MyProject</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+        header {
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            color: white;
+            padding: 20px 0;
+        }
+        header h1 {
+            font-size: 3rem;
+            margin: 0;
+        }
+        .welcome-section {
+            padding: 50px 20px;
+        }
+        .welcome-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        .welcome-section p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+        .welcome-section ul {
+            text-align: left;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            padding: 0;
+            list-style: none;
+        }
+        .welcome-section ul li {
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+        .cta-button {
+            display: inline-block;
+            background: #6a11cb;
+            color: white;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            text-decoration: none;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: background 0.3s;
+            margin: 5px;
+        }
+        .cta-button:hover {
+            background: #2575fc;
+        }
+        footer {
+            background: #333;
+            color: white;
+            padding: 20px 0;
+            margin-top: 30px;
+        }
+        footer p {
+            margin: 0;
+            font-size: 0.9rem;
+        }
+        footer i {
+            color: red;
+        }
+    </style>
 </head>
 <body>
-    <h1>Welcome to About Page</h1>
-    <div>Konten disini</div>
+    <header>
+        <div class="container">
+            <h1>About Me</h1>
+        </div>
+    </header>
+
+    <main>
+        <div class="welcome-section">
+            <h2>Hello, Everyone!</h2>
+            <p>
+                Selamat datang di situs saya! Saya (Nawal) adalah seorang pengembang muda yang berfokus pada solusi digital untuk berbagai kebutuhan, mulai dari manajemen data hingga e-commerce. Dengan semangat belajar dan kreativitas, saya telah mengembangkan beberapa aplikasi berbasis web untuk mempermudah aktivitas sehari-hari.
+            </p>
+            <ul>
+                <li>
+                    <strong>Aplikasi Absensi Siswa:</strong> Sebuah aplikasi berbasis Laravel 9 yang dirancang untuk mempermudah pencatatan kehadiran siswa secara efisien dan terorganisir.
+                </li>
+                <li>
+                    <strong>Website Toko Buku Online:</strong> Sebuah platform sederhana namun fungsional untuk menjual buku secara online, dibangun menggunakan Laravel 9. Aplikasi ini memberikan pengalaman belanja yang mudah dan cepat.
+                </li>
+                <li>
+                    <strong>Aplikasi Tata Usaha Pembayaran Tagihan Siswa:</strong> Proyek terbaru saya menggunakan Laravel 10, yang memungkinkan siswa dan orang tua mengelola pembayaran tagihan sekolah secara daring. Aplikasi ini dirancang untuk mendukung transparansi dan efisiensi dalam manajemen keuangan sekolah.
+                </li>
+            </ul>
+            <!-- <a href="/about" class="cta-button">Learn More About Us</a> -->
+            <a href="{% url 'my_projects' %}" class="cta-button">View My Projects</a>
+            <a href="/contact" class="cta-button">Contact Us</a>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 MyProject</p>
+        </div>
+    </footer>
 </body>
 </html>
