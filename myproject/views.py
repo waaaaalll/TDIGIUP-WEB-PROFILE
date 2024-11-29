@@ -10,5 +10,5 @@ def about(request):
 def contact(request):
     return render(request,'contact.html')
 def my_project(request):
-    data = MyProject.objects.all()
+    data = MyProject.objects.all() #Untuk memunculkan data dari database
     return render(request,'my_project.html', {'projects': data})

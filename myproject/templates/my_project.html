@@ -62,11 +62,17 @@
             margin: 0;
             font-size: 0.9rem;
         }
+        hr {
+        border: 1px solid #000; /* Garis berwarna hitam */
+        margin-top: 30px;
+        margin-bottom: 20px;
+        }
     </style>
 </head>
 <body>
-    <div class="container">
+    <div class="container mb-3">
         <h1>My Projects</h1>
+        <hr>
         <div class="row">
             {% for project in projects %}
                 <div class="col-md-4">
