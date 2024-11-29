@@ -24,6 +24,6 @@ urlpatterns = [
     path('home/', view.home),
     path('about/', view.about),
     path('contact/', view.contact),
-    path('my-project/', view.my_project, name="my_projects"),
+    path('my-project/', view.my_project, name="my_project"),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) #Menampilkan gambar

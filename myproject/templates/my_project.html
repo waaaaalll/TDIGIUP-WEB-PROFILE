@@ -5,74 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Projects</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f7fc;
-            color: #333;
-            margin: 0;
-            padding: 0;
-        }
-        .container {
-            padding: 60px 20px;
-        }
-        h1 {
-            text-align: center;
-            margin-bottom: 40px;
-            color: #212529;
-            font-size: 2.5rem;
-        }
-        .card {
-            border: none;
-            transition: transform 0.3s, box-shadow 0.3s;
-            background: linear-gradient(145deg, #ffffff, #e6e9ef);
-            box-shadow: 6px 6px 12px #d1d4db, -6px -6px 12px #ffffff;
-            border-radius: 15px;
-        }
-        .card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
-        }
-        .card-img-top {
-            height: 220px;
-            object-fit: cover;
-            border-top-left-radius: 15px;
-            border-top-right-radius: 15px;
-        }
-        .card-title {
-            color: #495057;
-            font-weight: 700;
-            margin-bottom: 10px;
-        }
-        .card-text {
-            color: #6c757d;
-            font-size: 0.9rem;
-        }
-        .card-text small {
-            color: #adb5bd;
-        }
-        footer {
-            background-color: #212529;
-            color: white;
-            text-align: center;
-            padding: 20px 0;
-            margin-top: 40px;
-        }
-        footer p {
-            margin: 0;
-            font-size: 0.9rem;
-        }
-        hr {
-        border: 1px solid #000; /* Garis berwarna hitam */
-        margin-top: 30px;
-        margin-bottom: 20px;
-        }
-    </style>
 </head>
+<style>
+    .back-to-home {
+            margin-top: 40px;
+            text-align: center;
+        }
+        .back-to-home a {
+            display: inline-block;
+            background: #2575fc;
+            color: white;
+            padding: 15px 30px;
+            font-size: 1rem;
+            text-decoration: none;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: background 0.3s;
+        }
+        .back-to-home a:hover {
+            background: #6a11cb;
+        }
+</style>
 <body>
-    <div class="container mb-3">
-        <h1>My Projects</h1>
-        <hr>
+    <div class="container my-5">
+        <!-- Header -->
+        <h1 class="text-center mb-4">My Projects</h1>
+
+        <!-- Bagian Proyek -->
         <div class="row">
             {% for project in projects %}
                 <div class="col-md-4">
@@ -82,16 +41,59 @@
                             <h5 class="card-title">{{ project.title }}</h5>
                             <p class="card-text">{{ project.description }}</p>
                             <p class="card-text">
-                                <small>Date: {{ project.date }}</small>
+                                <small class="text-muted">Date: {{ project.date }}</small>
                             </p>
                         </div>
                     </div>
                 </div>
+            {% empty %}
+                <p class="text-center">Tidak ada proyek yang ditemukan.</p>
             {% endfor %}
         </div>
+
+        <!-- Form Guest Book -->
+        <div class="mt-5">
+            <h2 class="text-center mb-4">Guest Book</h2>
+            <form method="post">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="id_nama" class="form-label">Nama</label>
+                    <input type="text" name="nama" id="id_nama" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label for="id_alamat" class="form-label">Alamat</label>
+                    <input type="text" name="alamat" id="id_alamat" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label for="id_pesan" class="form-label">Pesan</label>
+                    <textarea name="pesan" id="id_pesan" class="form-control" rows="4" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Tambah Buku Tamu</button>
+            </form>
+        </div>
+
+        <!-- Daftar Buku Tamu -->
+        <div class="mt-5">
+            <h3 class="text-center">Daftar Buku Tamu</h3>
+            <ul class="list-group">
+                {% for guest in guestbooks %}
+                    <li class="list-group-item">
+                        <strong>{{ guest.nama }}</strong> <span class="text-muted">({{ guest.tanggal|date:"d M Y" }})</span><br>
+                        <small>Alamat: {{ guest.alamat }}</small><br>
+                        <p>{{ guest.pesan }}</p>
+                    </li>
+                {% empty %}
+                    <li class="list-group-item text-center">Belum ada data buku tamu.</li>
+                {% endfor %}
+            </ul>
+
+            <div class="back-to-home">
+                <a href="/home">Back to Home</a>
+            </div>
+        </div>
     </div>
-    <footer>
-        <p>&copy; 2024 MyProject. All rights reserved.</p>
-    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
